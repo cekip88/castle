@@ -257,13 +257,29 @@ body
 					bgc(RGB($orange))
 			&.active
 				bgc(RGB($orange))
+	&-slides
+		w(100%)
+		df({
+			df: '.main-slides'
+			ali: stretch
+		})
+		overflow hidden
 	&-slide
+		w(100%)
 		df({
 			df:'.main-slide'
 		})
+		flex-shrink 0
 		flex-direction column
 		+tablet()
+			h(384px)
+			flex-direction row
+			align-items center
 			position relative
+		+tablet-large()
+			h(465px)
+		+desktop()
+			h(744px)
 		&-bgc
 			wh(100vw,38.75vw)
 			opacity .9
@@ -279,18 +295,16 @@ body
 			p(20px 10px)
 			color RGB($white)
 			+tablet()
-				p(60px 20px)
+				p(0 20px)
 				display flex
 				justify-content center
 				flex-direction column
 				position relative
 				z-index 1
-			+tablet-large()
-				p(100px 20px)
 			+desktop()
 				w(1170px)
 				m(0 auto)
-				p(199px 0)
+				p(0)
 		&-title
 			margin-bottom 20px
 			text-transform uppercase
