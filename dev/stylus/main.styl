@@ -9,13 +9,16 @@ font_inc($f_bold,'Gilroy-Bold.woff2')
 	p(0)
 	box-sizing border-box
 
+	
 button,input
 	background none
 	border none
 
+	
 img,svg
 	max-width 100%
 
+	
 a,button
 	font 1em $f_bold
 	text-transform uppercase
@@ -28,6 +31,7 @@ ul,ol,dl
 
 body
 	font 14px $f_bold
+	color RGB($white)
 	bgc(RGB($black))
 	&:after
 		wh(100%)
@@ -37,6 +41,7 @@ body
 		absolute top 0 left 0
 		z-index -1
 
+		
 .section
 	w(100%)
 	p(0 10px)
@@ -47,9 +52,11 @@ body
 		p(0)
 		m(0 auto)
 
+	
 .notScrollable
 	overflow hidden
 
+	
 .head
 	wh(100%,80px)
 	p(10px 0)
@@ -77,10 +84,10 @@ body
 		+tablet-large()
 			h(96px)
 	.section
-		df({
-			df:'.head .section'
-		})
 		h(100%)
+		df({
+			df: '.head .section'
+		})
 		flex-direction column
 		+tablet-large()
 			flex-direction row
@@ -103,7 +110,7 @@ body
 	&-burger
 		wh(28px)
 		df({
-			df:'.head-burger'
+			df: '.head-burger'
 			jus: center
 		})
 		flex-direction column
@@ -144,7 +151,7 @@ body
 		margin-top auto
 		margin-bottom 30px
 		df({
-			df:'.head-address'
+			df: '.head-address'
 			ali: center
 		})
 		column-gap 10px
@@ -167,6 +174,8 @@ body
 		tr()
 		&:hover
 			bgc(transparent)
+
+	
 .hover
 	+desktop()
 		position relative
@@ -182,10 +191,32 @@ body
 			&:after
 				w(100%)
 				left 0
-.buttons
-	&-block
+				
+	
+.title
+	font-size 24px
+	text-transform uppercase
+	+tablet()
+		font-size 36px
+	+desktop()
+		font-size 48px
+		letter-spacing -.96px
+	
+	
+.block
+	padding-top 60px
+	+tablet()
+		padding-top 90px
+	+desktop()
+		padding-top 120px
+	.title
+		w(max-content)
+		m(0 auto 20px)
+		+tablet-large()
+			margin-bottom 37px
+	&-buttons
 		df({
-			df:'.buttons-block'
+			df: '.block-buttons'
 			ali: center
 		})
 		column-gap 20px
@@ -229,7 +260,7 @@ body
 			m(0 auto)
 			p(7px 10px)
 			df({
-				df:'.main-slider-control'
+				df: '.main-slider-control'
 				ali: center
 				jus: center
 			})
@@ -307,7 +338,6 @@ body
 				p(0)
 		&-title
 			margin-bottom 20px
-			text-transform uppercase
 			+tablet()
 				w(440px)
 				margin-top 0
@@ -324,3 +354,80 @@ body
 			+desktop()
 				font-size 20px
 				margin-bottom 80px
+	
+			
+.recommend
+	&-list
+		df({
+			df: '.recommend-list'
+		})
+		flex-wrap wrap
+		row-gap 24px
+		column-gap 16px
+	&-item
+		+tablet()
+			w(calc(50% - 8px))
+		&-img
+			margin-bottom 14px
+			box-shadow 0 4px 4px 0 rgba(0,0,0,.25)
+			+tablet()
+				wh(100%,163px)
+			+tablet-large()
+				h(226px)
+			+desktop()
+				h(269px)
+			img
+				wh(100%)
+				object-fit cover
+		&-title
+			margin-bottom 10px
+			font-size 20px
+			text-transform uppercase
+			letter-spacing -.4px
+		&-text
+			max-width 477px
+			margin-bottom 15px
+			lih(1.75)
+			+tablet-large()
+				font-size 16px
+			
+			
+.building
+	&-list
+		df({
+			df: '.building-list'
+		})
+		flex-wrap wrap
+		gap 18px
+	&-item
+		w(100%)
+		+tablet()
+			w(calc(50% - 9px))
+		+tablet-large()
+			w(calc((100% - 54px) / 4))
+		&-link
+			w(100%)
+			df({
+				df: '.building-item'
+			})
+			flex-direction column
+			+desktop()
+				box-sizing content-box
+				border 4px solid transparent
+				tr()
+				&:hover
+					border-color RGB($orange)
+		&-img
+			wh(100%,264px)
+			display block
+			img
+				wh(100%)
+				object-fit cover
+		&-text
+			p(39px 0 33px)
+			bgc(RGB($white))
+			font-size 20px
+			text-align center
+			color RGB($black)
+			text-transform uppercase
+			letter-spacing -.4px

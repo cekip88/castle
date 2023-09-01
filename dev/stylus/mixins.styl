@@ -23,19 +23,17 @@ df(params)
     'flex-start':$alis,
     'flex-end':$alie
   }
-
   if( !(params['df'] in flexes) )
     if(params['df'])
       @extend $df
     push(flexes,params['df'])
-
   if(params['jus'])
     @extend {spaces[params['jus']]}
   if(params['ali'])
     @extend {items[params['ali']]}
 
 w($w)
-  width $w
+	width $w
 h($h)
   height $h
 wh($w,$h=$w)
@@ -84,7 +82,7 @@ getRgb(color)
   red(color)\,green(color)\,blue(color)
 
 tablet()
-  +media(740px)
+  +media(768px)
     {block}
 tablet-large()
   +media(1024px)

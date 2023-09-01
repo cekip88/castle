@@ -15,23 +15,68 @@ block content
 					.main-slide-bgc
 						+img('main-slide-bgc-1.jpg')
 					.main-slide-info
-						h2.main-slide-title Delightful Dishes Delivered Fast
+						h2.main-slide-title.title Delightful Dishes Delivered Fast
 						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today?
-						.buttons-block
+						.block-buttons
 							button.btn Make an order
-							a(href='#').buttons-block-right.hover Go to menu
+							a(href='#').block-buttons-right.hover Go to menu
 				.main-slide
 					.main-slide-bgc
 						+img('main-slide-bgc-1.jpg')
 					.main-slide-info
-						h2.main-slide-title Delightful Dishes Delivered Fast Delightful Dishes Delivered Fast
+						h2.main-slide-title.title Delightful Dishes Delivered Fast Delightful Dishes Delivered Fast
 						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today? Ordering food from our restaurant is the best thing that can happen today?
-						.buttons-block
+						.block-buttons
 							button.btn Make an order
-							a(href='#').buttons-block-right.hover Go to menu
+							a(href='#').block-buttons-right.hover Go to menu
 			.main-slider-control
 				button.main-slider-dot
 				button.main-slider-dot.active
 				button.main-slider-dot
 				button.main-slider-dot
 				button.main-slider-dot
+		section.block.recommend
+			.section
+				h2.title We recommend
+				ul.recommend-list
+					-for (let i = 0; i < 2; i++)
+						li.recommend-item
+							.recommend-item-img
+								+img('recommend-1.jpg')
+							h5.recommend-item-title BBQ SMOKE
+							p.recommend-item-text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+							.block-buttons
+								button.btn Add to order
+								span.block-buttons-right $25.00
+						li.recommend-item
+							.recommend-item-img
+								+img('recommend-2.jpg')
+							h5.recommend-item-title BURGER & french fries
+							p.recommend-item-text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+							.block-buttons
+								button.btn Add to order
+								span.block-buttons-right $25.00
+		section.block.building
+			.section
+				h2.title building your order
+				ul.building-list
+					li.building-item
+						a(href='#').building-item-link
+							span.building-item-img
+								+img('building-1.jpg')
+							span.building-item-text #dinner
+					li.building-item
+						a(href='#').building-item-link
+							span.building-item-img
+								+img('building-2.jpg')
+							span.building-item-text #SUPPER
+					li.building-item
+						a(href='#').building-item-link
+							span.building-item-img
+								+img('building-3.jpg')
+							span.building-item-text #PARTY
+					li.building-item
+						a(href='#').building-item-link
+							span.building-item-img
+								+img('building-4.jpg')
+							span.building-item-text #FAMILY
