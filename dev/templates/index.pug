@@ -1,0 +1,28 @@
+extends template/main
+append vars
+	-
+		page_title= 'Main'
+block content
+	main.main
+		section.main-slider
+			.main-slider-top
+				+img('slider-top-line.png').main-slider-top-line
+				svg.main-slider-top-icon
+					use(xlink:href='/img/sprite.svg#slider-top')
+				+img('slider-top-line.png').main-slider-top-line
+			.main-slides
+				.main-slide
+					.main-slide-bgc
+						+img('main-slide-bgc-1.jpg')
+					.main-slide-info
+						h2.main-slide-title Delightful Dishes Delivered Fast
+						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today?
+						.buttons-block
+							button.btn Make an order
+							a(href='#').buttons-block-right.hover Go to menu
+			.main-slider-control
+				button.main-slider-dot
+				button.main-slider-dot.active
+				button.main-slider-dot
+				button.main-slider-dot
+				button.main-slider-dot

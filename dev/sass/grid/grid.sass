@@ -1,0 +1,43 @@
+@use "sass:math"
+$unit: 'px'
+.pallet
+	font-weight: 700
+	text-align: center
+	&:before
+		+af("P")
+.bricks
+	+w(100%)
+	display: flex
+	justify-content: flex-start
+	flex-wrap: wrap
+
+$cols: 12
+$one_col_koef: .7
+
+=grid($col_cnt,$letter,$full:null)
+	@for $i from 1 through $col_cnt
+		@if($full)
+			$one_full_col: math.div(100%, 11.7)
+			$one_dep: $one_full_col - ($one_full_col * $one_col_koef)
+			$one_col: $one_full_col - $one_dep
+			#{$letter}#{$i}
+				width:  ($one_full_col * $i)
+			#{$letter}wd#{$i}
+				width: (($one_full_col) * $i) - $one_dep
+			#{$letter}wi#{$i}
+				width: (($one_full_col) * $i) - $one_col
+		@else
+			$one_full_col: math.div(100%, $col_cnt)
+			#{$letter}#{$i}
+				width:  ($one_full_col * $i)
+
+@media screen and (min-width: 0px)
+	+grid($cols,'.m')
+@media screen and (min-width: 420px)
+	+grid($cols,'.ml')
+@media screen and (min-width: 748px)
+	+grid($cols,'.t')
+@media screen and (min-width: 1024px)
+	+grid($cols,'.tl')
+@media screen and (min-width: 1170px)
+	+grid($cols,'.d','true')

@@ -1,0 +1,30 @@
+@import "../../../../core/mixins/reset"
+@import "../../../../core/mixins/mixins"
+@import "vars"
+$dpx: 14px
+$font_body: 14px
+//+font_inc($f_reg,'roboto-regular.ttf')
+.set,body
+	+wh(100%)
+body
+	+font($font_body,$f_reg,$black)
+	min-height: 100vh
+	overflow-x: hidden
+
+input,button
+	font-family: inherit
+	font-size: inherit
+	background-color: transparent
+	border: none
+button,label,input[type='submit'],input[type='button']
+	cursor: pointer
+// -==[ Медиа ]==-
+@import "media/m"
++mq(440px)
+	@import "media/ml"
++mq(740px)
+	@import "media/t"
++mq(1000px)
+	@import "media/tl"
++mq(1170px)
+	@import "media/d"

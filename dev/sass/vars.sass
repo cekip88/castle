@@ -1,0 +1,59 @@
+%df
+	display: flex
+%dfi
+	@extend %df
+	justify-content: space-between
+	align-items: center
+%dfc
+	@extend %df
+	justify-content: center
+	align-items: center
+
+\:root
+	///*--==[ Размеры экранов ]==--*/
+	--mobile-width: calc(100% - 20px)
+	--mobile-large-width: 460px
+	--tablet-width: 740px
+	--tablet-large-width: 1000px
+	--desktop-width: 1170px
+	// --==[ Цвета ]==--
+	
+	
+	--green: #{getRgb(#00FF00)}
+	--black: #{getRgb(#000)}
+	--blue: #{getRgb(#0000FF)}
+	--gray: #{getRgb(#DDD)}
+	--red: #{getRgb(#FF0000)}
+	// --==[ Шрифты ]==--
+	--fontsize-body: 14px
+	--freg: ''
+	// --==[ Отступы ]==--
+	--col: 70px
+	--gap: 30px
+
+
+
+// --==[ Ширины ]==--
+$mobile: var(--mobile-width)
+$mobile-large: var(--mobile-large-width)
+$tablet: var(--tablet-width)
+$tablet-large: var(--tablet-large-width)
+$desktop: var(--desktop-width)
+
+///*--==[ Отступы ]==--*/
+$col: var(--col)
+$gap: var(--gap)
+$f_reg: 'Replace on font name'
+// --==[Шрифты]==--
+//
+	$f_light: '1'
+	$f_reg: '2'
+	$f_semi:'3'
+	$f_bold:'4'
+
+// --==[ Цвета ]==--
+$black: var(--black)
+$blue: var(--blue)
+$gray: var(--gray)
+$green: var(--green)
+$red: var(--red)

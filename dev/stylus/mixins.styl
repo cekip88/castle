@@ -1,0 +1,95 @@
+-pos(type, args)
+  i = 0
+  position: unquote(type)
+  {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+  {args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+absolute()
+  -pos('absolute', arguments)
+fixed()
+  -pos('fixed', arguments)
+flexes = {}
+df(params)
+  spaces = {
+    'center': $juc,
+    'flex-start': $jufs,
+    'flex-end': $jufe,
+    'space-arround': $jusa,
+    'space-between': $jusb,
+    'space-evenly': $juse
+  }
+  items ={
+    'stretch':$alist,
+    'center':$alic,
+    'flex-start':$alis,
+    'flex-end':$alie
+  }
+
+  if( !(params['df'] in flexes) )
+    if(params['df'])
+      @extend $df
+    push(flexes,params['df'])
+
+  if(params['jus'])
+    @extend {spaces[params['jus']]}
+  if(params['ali'])
+    @extend {items[params['ali']]}
+
+w($w)
+  width $w
+h($h)
+  height $h
+wh($w,$h=$w)
+  width $w
+  height $h
+trans($x,$y=$x)
+  transform translate($x,$y)
+af($content='')
+  content $content
+  display block
+m(args)
+	margin args
+p(args)
+	padding args
+dn()
+	display none
+tr($tr=0.35s ease)
+	transition $tr
+tac()
+	text-align center
+bgc($color)
+	background-color $color
+lih(param)
+	line-height param
+font_inc($family,$name)
+  @font-face
+    src url('fonts/'+$name)
+    font-family $family
+font($size,$family,$color=null)
+  font $size $family
+  if($color != null)
+    color $color
+bg($size=null,$color=null,$image=null,$position=null,$repeat=null)
+  if( ($color != null) || ($image != null) ||($position != null) ||($repeat != null) )
+    background $color $image $position $repeat
+  -webkit-background-size $size
+  background-size $size
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+media(width, type= min)
+  @media screen and ({type}-width: width)
+    {block}
+getRgb(color)
+  red(color)\,green(color)\,blue(color)
+
+tablet()
+  +media(740px)
+    {block}
+tablet-large()
+  +media(1024px)
+    {block}
+desktop()
+  +media(1200px)
+    {block}
+

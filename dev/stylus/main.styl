@@ -1,0 +1,312 @@
+@import mixins
+@import vars
+@import groups
+
+font_inc($f_bold,'Gilroy-Bold.woff2')
+
+*
+	m(0)
+	p(0)
+	box-sizing border-box
+
+button,input
+	background none
+	border none
+
+img,svg
+	max-width 100%
+
+a,button
+	font 1em $f_bold
+	text-transform uppercase
+	text-decoration none
+	cursor pointer
+
+ul,ol,dl
+	list-style none
+
+
+body
+	font 14px $f_bold
+	bgc(RGB($black))
+	&:after
+		wh(100%)
+		af()
+		background-image url('/img/main-bgc.jpg')
+		opacity .6
+		absolute top 0 left 0
+		z-index -1
+
+.section
+	w(100%)
+	p(0 10px)
+	+tablet()
+		p(0 20px)
+	+desktop()
+		w(1170px)
+		p(0)
+		m(0 auto)
+
+.notScrollable
+	overflow hidden
+
+.head
+	wh(100%,80px)
+	p(10px 0)
+	overflow hidden
+	text-transform uppercase
+	absolute top 0 left 0
+	z-index 100
+	tr()
+	+tablet-large()
+		p(0)
+		overflow visible
+	+desktop()
+		h(144px)
+		padding-top 24px
+	&.active
+		height 100vh
+		background-image url('/img/main-bgc.png')
+		bgc(RGB($black))
+		.head
+			&-burger
+				&-line
+					&:first-child,&:last-child
+						trans(0)
+	&,&.active
+		+tablet-large()
+			h(96px)
+	.section
+		df({
+			df:'.head .section'
+		})
+		h(100%)
+		flex-direction column
+		+tablet-large()
+			flex-direction row
+			align-items center
+			justify-content space-between
+			position relative
+	&-row
+		df({
+			df: '.head-row'
+			ali: center
+			jus: space-between
+		})
+		+tablet-large()
+			order 1
+	&-logo
+		+tablet-large()
+			trans(-50%,0)
+			position absolute
+			left 50%
+	&-burger
+		wh(28px)
+		df({
+			df:'.head-burger'
+			jus: center
+		})
+		flex-direction column
+		row-gap 8px
+		+tablet-large()
+			dn()
+		&-line
+			h(2px)
+			bgc(RGB($white))
+			tr()
+			&:first-child
+				w(16px)
+				trans(12px,0)
+			&:nth-child(2)
+				w(100%)
+			&:last-child
+				w(20px)
+				trans(8px,0)
+	&-nav
+		margin-top 50px
+		p(0 20px)
+		df({
+			df: '.head-nav'
+		})
+		flex-direction column
+		row-gap 20px
+		+tablet-large()
+			m(0)
+			p(0)
+			order 2
+			flex-direction row
+			column-gap 20px
+		+desktop()
+			column-gap 40px
+		&-link
+			color RGB($white)
+	&-address
+		margin-top auto
+		margin-bottom 30px
+		df({
+			df:'.head-address'
+			ali: center
+		})
+		column-gap 10px
+		color RGB($white)
+		+tablet-large()
+			m(0)
+		&-icon
+			wh(24px)
+
+
+.btn
+	wh(160px,72px)
+	bgc(RGB($orange))
+	color RGB($white)
+	text-transform uppercase
+	+tablet()
+		w(180px)
+	+desktop()
+		border 2px solid RGB($orange)
+		tr()
+		&:hover
+			bgc(transparent)
+.hover
+	+desktop()
+		position relative
+		&:after
+			af()
+			wh(0,2px)
+			bgc(RGB($white))
+			tr()
+			position absolute
+			left 50%
+			bottom -2px
+		&:hover
+			&:after
+				w(100%)
+				left 0
+.buttons
+	&-block
+		df({
+			df:'.buttons-block'
+			ali: center
+		})
+		column-gap 20px
+		text-transform uppercase
+		+tablet()
+			column-gap 40px
+		&-right
+			color RGB($white)
+
+
+.main
+	p(80px 0 0)
+	+tablet-large()
+		padding-top 96px
+	+desktop()
+		padding-top 144px
+	&-slider
+		+tablet()
+			position relative
+		&-top
+			w(100%)
+			margin-bottom 8px
+			df({
+				df: '.main-slider-top'
+				ali: center
+				jus: center
+			})
+			column-gap 20px
+			overflow hidden
+			&-icon
+				wh(20px)
+				flex-shrink 0
+				+tablet-large()
+					wh(40px)
+			&-line
+				wh(calc(100% - 30px),4px)
+				+tablet-large()
+					w(calc(50% - 40px))
+		&-control
+			w(max-content)
+			m(0 auto)
+			p(7px 10px)
+			df({
+				df:'.main-slider-control'
+				ali: center
+				jus: center
+			})
+			bgc($blackBGC)
+			gap 20px
+			border-radius 15px
+			+tablet()
+				m(0)
+				p(10px 7px)
+				flex-direction column
+				position absolute
+				z-index 10
+				right 20px
+				top 50%
+				trans(0,-50%)
+			+desktop()
+				right calc(50% - (1170px / 2))
+		&-dot
+			wh(16px)
+			border-radius 100%
+			bgc(RGB($white))
+			tr()
+			+desktop()
+				&:hover
+					bgc(RGB($orange))
+			&.active
+				bgc(RGB($orange))
+	&-slide
+		df({
+			df:'.main-slide'
+		})
+		flex-direction column
+		+tablet()
+			position relative
+		&-bgc
+			wh(100vw,38.75vw)
+			opacity .9
+			+tablet()
+				wh(100%)
+				position absolute
+			img
+				wh(100%)
+				display block
+				object-fit cover
+		&-info
+			w(100%)
+			p(20px 10px)
+			color RGB($white)
+			+tablet()
+				p(60px 20px)
+				display flex
+				justify-content center
+				flex-direction column
+				position relative
+				z-index 1
+			+tablet-large()
+				p(100px 20px)
+			+desktop()
+				w(1170px)
+				m(0 auto)
+				p(199px 0)
+		&-title
+			margin-bottom 20px
+			text-transform uppercase
+			+tablet()
+				w(440px)
+				margin-top 0
+				font-size 36px
+			+desktop()
+				font-size 48px
+				letter-spacing -.96px
+		&-text
+			margin-bottom 40px
+			lih(1.4)
+			+tablet()
+				w(421px)
+				font-size 16px
+			+desktop()
+				font-size 20px
+				margin-bottom 80px
