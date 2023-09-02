@@ -1,3 +1,29 @@
 footer.foot
+	.lines
+		+img('slider-top-line.png').lines-item
+		svg.lines-icon
+			use(xlink:href='/img/sprite.svg#slider-top')
+		+img('slider-top-line.png').lines-item
+	.section
+		.foot-row
+			.foot-copy Copyright © 2020 — 2023 CASTEL.IL
+			ul.foot-links
+				li.foot-links-item
+					a(href='#').foot-link.hover privacy policy
+				li.foot-links-item
+					a(href='#').foot-link.hover OFFER
+			ul.foot-soc
+				li.foot-soc-item
+					a(href='#').foot-soc-link
+						svg.foot-soc-icon
+							use(xlink:href='/img/sprite.svg#instagram')
+				li.foot-soc-item
+					a(href='#').foot-soc-link
+						svg.foot-soc-icon
+							use(xlink:href='/img/sprite.svg#facebook')
+				li.foot-soc-item
+					a(href='#').foot-soc-link
+						svg.foot-soc-icon
+							use(xlink:href='/img/sprite.svg#whatsapp')
 	.section
 		+inc('js','front.js',false)(type="module")

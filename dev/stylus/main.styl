@@ -197,6 +197,7 @@ body
 .title
 	font-size 24px
 	text-transform uppercase
+	text-align center
 	+tablet()
 		font-size 36px
 	+desktop()
@@ -211,8 +212,7 @@ body
 	+desktop()
 		padding-top 120px
 	.title
-		w(max-content)
-		m(0 auto 20px)
+		m(0 0 20px)
 		+tablet-large()
 			margin-bottom 37px
 	&-buttons
@@ -228,6 +228,24 @@ body
 			color RGB($white)
 
 
+.lines
+	w(100%)
+	df({
+		df: '.lines'
+		ali: center
+		jus: center
+	})
+	column-gap 20px
+	overflow hidden
+	&-icon
+		wh(20px)
+		flex-shrink 0
+		+tablet-large()
+			wh(40px)
+	&-item
+		wh(calc(100% - 30px),4px)
+		+tablet-large()
+			w(calc(50% - 40px))
 .main
 	p(80px 0 0)
 	+tablet-large()
@@ -237,25 +255,8 @@ body
 	&-slider
 		+tablet()
 			position relative
-		&-top
-			w(100%)
+		.lines
 			margin-bottom 8px
-			df({
-				df: '.main-slider-top'
-				ali: center
-				jus: center
-			})
-			column-gap 20px
-			overflow hidden
-			&-icon
-				wh(20px)
-				flex-shrink 0
-				+tablet-large()
-					wh(40px)
-			&-line
-				wh(calc(100% - 30px),4px)
-				+tablet-large()
-					w(calc(50% - 40px))
 		&-control
 			w(max-content)
 			m(0 auto)
@@ -266,7 +267,7 @@ body
 				jus: center
 			})
 			bgc($blackBGC)
-			gap 20px
+			column-gap 20px
 			border-radius 15px
 			+tablet()
 				m(0)
@@ -277,6 +278,8 @@ body
 				right 20px
 				top 50%
 				trans(0,-50%)
+			+tablet-large()
+				row-gap 40px
 			+desktop()
 				right calc(50% - (1170px / 2))
 		&-dot
@@ -338,11 +341,11 @@ body
 				m(0 auto)
 				p(0)
 		&-title
-			margin-bottom 20px
+			m(0 0 20px!important)
+			text-align left!important
 			+tablet()
-				w(440px)
-				margin-top 0
-				font-size 36px
+				w(440px!important)
+				margin-top 0!important
 			+desktop()
 				font-size 48px
 				letter-spacing -.96px
@@ -432,3 +435,93 @@ body
 			color RGB($black)
 			text-transform uppercase
 			letter-spacing -.4px
+.promo
+	&-slider
+		&-control
+			+desktop()
+				right 99px
+	&-slide
+		+desktop()
+			h(456px)
+		&-info
+			+desktop()
+				p(0 99px)
+.contacts
+	&-map
+		wh(100%,55vw)
+		min-height 350px
+		+desktop()
+			h(648px)
+		iframe
+			wh(100%)
+			opacity .9
+	&-list
+		padding-top 20px
+		df({
+			df: '.contacts-list'
+			ali: center
+			jus: space-between
+		})
+		flex-wrap wrap
+		row-gap 20px
+		+tablet-large()
+			padding-top 35px
+	&-item
+		w(100%)
+		df({
+			df: '.contacts-item'
+			ali: center
+		})
+		column-gap 20px
+		+tablet()
+			w(50%)
+		+desktop()
+			w(initial)
+		&-icon
+			wh(28px)
+		&-title,&-text
+			font-size 20px
+			letter-spacing -2%
+			text-transform uppercase
+		&-text
+			color RGB($orange)
+		
+.foot
+	padding-top 50px
+	+tablet-large()
+		padding-top 98px
+	&-row
+		p(20px 0)
+		df({
+			df: '.foot-row'
+			ali: center
+		})
+		flex-direction column
+		row-gap 20px
+		+tablet()
+			flex-direction row
+			justify-content space-between
+		+tablet-large()
+			p(63px 0 70px)
+			position relative
+	&-links
+		df({
+			df: '.foot-links'
+			ali: center
+		})
+		column-gap 40px
+		+tablet-large()
+			position absolute
+			left 50%
+			trans(-50%)
+	&-link
+		color RGB($white)
+		text-transform uppercase
+	&-soc
+		df({
+			df: '.foot-soc'
+			ali: center
+		})
+		column-gap 44px
+		&-icon
+			wh(21px)
