@@ -4,13 +4,13 @@ append vars
 		page_title= 'Main'
 block content
 	main.main
-		section.main-slider
-			.lines
-				+img('slider-top-line.png').lines-item
-				svg.lines-icon
-					use(xlink:href='/img/sprite.svg#slider-top')
-				+img('slider-top-line.png').lines-item
-			.main-slides
+		.lines
+			+img('slider-top-line.png').lines-item
+			svg.lines-icon
+				use(xlink:href='/img/sprite.svg#slider-top')
+			+img('slider-top-line.png').lines-item
+		section.main-slider.solo-slider
+			.main-slides.solo-slides
 				.main-slide
 					.main-slide-bgc
 						+img('main-slide-bgc-1.jpg')
@@ -22,20 +22,38 @@ block content
 							a(href='#').block-buttons-right.hover Go to menu
 				.main-slide
 					.main-slide-bgc
-						+img('main-slide-bgc-1.jpg')
+						+img('gallery-1.jpg')
 					.main-slide-info
-						h2.main-slide-title.title Delightful Dishes Delivered Fast Delightful Dishes Delivered Fast
-						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today? Ordering food from our restaurant is the best thing that can happen today?
+						h2.main-slide-title.title Delightful Dishes Delivered Fast 2
+						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today?
 						.block-buttons
 							button.btn Make an order
 							a(href='#').block-buttons-right.hover Go to menu
-			.main-slider-control
-				button.main-slider-dot
-				button.main-slider-dot.active
-				button.main-slider-dot
-				button.main-slider-dot
-				button.main-slider-dot
+				.main-slide
+					.main-slide-bgc
+						+img('promo-slide-bgc-1.jpg')
+					.main-slide-info
+						h2.main-slide-title.title Delightful Dishes Delivered Fast 3
+						p.main-slide-text Ordering food from our restaurant is the best thing that can happen today?
+						.block-buttons
+							button.btn Make an order
+							a(href='#').block-buttons-right.hover Go to menu
+			.main-slider-control.solo-slider-control
+			.ondesk-img.top
+				+img('pepper.png')
+			.ondesk-img.middle
+				+img('tree-leaf.png')
+			.ondesk-img.bottom
+				+img('tree-leaf.png')
 		section.block.recommend
+			.ondesk-img.top-right
+				+img('garlic.png')
+			.ondesk-img.top-left
+				+img('lemon.png')
+			.ondesk-img.bottom-right
+				+img('tomato.png')
+			.ondesk-img.bottom-left
+				+img('garlic.png')
 			.section
 				h2.title We recommend
 				ul.recommend-list
@@ -57,6 +75,8 @@ block content
 								button.btn Add to order
 								span.block-buttons-right $25.00
 		section.block.building
+			.ondesk-img
+				+img('pepper.png')
 			.section
 				h2.title building your order
 				ul.building-list
@@ -81,10 +101,14 @@ block content
 								+img('building-4.jpg')
 							span.building-item-text #FAMILY
 		section.block.promo
+			.ondesk-img.top
+				+img('tomato-slice.png')
+			.ondesk-img.bottom
+				+img('lemon.png')
 			.section
 				h2.title promotion of the month
-				.main-slider.promo-slider
-					.main-slides
+				.main-slider.promo-slider.solo-slider
+					.main-slides.solo-slides
 						.main-slide.promo-slide
 							.main-slide-bgc
 								+img('promo-slide-bgc-1.jpg')
@@ -95,19 +119,42 @@ block content
 									button.btn Make an order
 						.main-slide.promo-slide
 							.main-slide-bgc
-								+img('promo-slide-bgc-1.jpg')
+								+img('main-slide-bgc-1.jpg')
 							.main-slide-info.promo-slide-info
-								h2.main-slide-title.title Delightful Dishes Delivered Fast Delightful Dishes Delivered Fast
+								h2.main-slide-title.title Delightful Dishes Delivered Fast
 								p.main-slide-text Ordering food from our restaurant is the best thing that can happen today? Ordering food from our restaurant is the best thing that can happen today?
 								.block-buttons
 									button.btn Make an order
-					.main-slider-control.promo-slider-control
-						button.main-slider-dot
-						button.main-slider-dot.active
-						button.main-slider-dot
-						button.main-slider-dot
-						button.main-slider-dot
+					.main-slider-control.promo-slider-control.solo-slider-control
+		section.block.gallery
+			.ondesk-img
+				+img('tree-leaf.png')
+			h2.title Gallery
+			.gallery-slider.slider
+				button(data-click="front:galleryPrev").gallery-slider-btn.gallery-slider-prev
+					svg.gallery-slider-btn-icon
+						use(xlink:href='/img/sprite.svg#prev-white')
+				.gallery-slides.slides
+					.gallery-slide
+						+img('gallery-2.jpg')
+					.gallery-slide
+						+img('gallery-3.jpg')
+					.gallery-slide
+						+img('gallery-1.jpg')
+					.gallery-slide
+						+img('gallery-2.jpg')
+					.gallery-slide
+						+img('gallery-3.jpg')
+				button(data-click="front:galleryNext").gallery-slider-btn.gallery-slider-next
+					svg.gallery-slider-btn-icon
+						use(xlink:href='/img/sprite.svg#next-white')
 		section.block.contacts
+			.ondesk-img.top-right
+				+img('tree-leaf.png')
+			.ondesk-img.bottom-right
+				+img('garlic.png')
+			.ondesk-img.bottom-left
+				+img('tomato.png')
 			.section
 				h2.title all roads lead to us
 				.contacts-map

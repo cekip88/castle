@@ -211,6 +211,7 @@ body
 		padding-top 90px
 	+desktop()
 		padding-top 120px
+		position relative
 	.title
 		m(0 0 20px)
 		+tablet-large()
@@ -246,6 +247,13 @@ body
 		wh(calc(100% - 30px),4px)
 		+tablet-large()
 			w(calc(50% - 40px))
+.ondesk-img
+	dn()
+	+desktop()
+		display block
+		position absolute
+		img
+			w(100%)
 .main
 	p(80px 0 0)
 	+tablet-large()
@@ -253,10 +261,11 @@ body
 	+desktop()
 		padding-top 144px
 	&-slider
+		margin-top 8px
 		+tablet()
+			display flex
+			align-items center
 			position relative
-		.lines
-			margin-bottom 8px
 		&-control
 			w(max-content)
 			m(0 auto)
@@ -276,8 +285,6 @@ body
 				position absolute
 				z-index 10
 				right 20px
-				top 50%
-				trans(0,-50%)
 			+tablet-large()
 				row-gap 40px
 			+desktop()
@@ -292,6 +299,20 @@ body
 					bgc(RGB($orange))
 			&.active
 				bgc(RGB($orange))
+		.ondesk-img
+			&.top
+				width: (141px)
+				left calc(50% - 660px)
+				top 5px
+				z-index 11
+			&.middle
+				right calc(50% - 800px)
+				z-index 11
+			&.bottom
+				w(149px)
+				bottom -85px
+				left calc(50% - 680px)
+				transform rotate(-180deg)
 	&-slides
 		w(100%)
 		df({
@@ -299,6 +320,9 @@ body
 			ali: stretch
 		})
 		overflow hidden
+		+desktop()
+			position relative
+			z-index 10
 	&-slide
 		w(100%)
 		df({
@@ -368,6 +392,9 @@ body
 		flex-wrap wrap
 		row-gap 24px
 		column-gap 16px
+		+desktop()
+			position relative
+			z-index 10
 	&-item
 		+tablet()
 			w(calc(50% - 8px))
@@ -396,7 +423,28 @@ body
 				font-size 16px
 			
 			
+	.ondesk-img
+		+desktop()
+			&.top-right
+				top 10px
+				right calc(50% - 700px)
+			&.top-left
+				top 250px
+				left calc(50% - 740px)
+			&.bottom-right
+				top 610px
+				right calc(50% - 700px)
+			&.bottom-left
+				transform rotateY(180deg)
+				bottom -150px
+				left calc(50% - 770px)
 .building
+	.ondesk-img
+		+desktop()
+			w 210px
+			transform rotateY(180deg) rotate(30deg)
+			top 140px
+			right calc(50% - 740px)
 	&-list
 		df({
 			df: '.building-list'
@@ -436,6 +484,15 @@ body
 			text-transform uppercase
 			letter-spacing -.4px
 .promo
+	.ondesk-img
+		+desktop()
+			&.top
+				top 40px
+				left calc(50% - 740px)
+			&.bottom
+				z-index 11
+				bottom -40px
+				right calc(50% - 740px)
 	&-slider
 		&-control
 			+desktop()
@@ -446,7 +503,96 @@ body
 		&-info
 			+desktop()
 				p(0 99px)
+			
+		
+.gallery
+	.ondesk-img
+		+desktop()
+			left calc(50% - 700px)
+			z-index 11
+	&-slider
+		display flex
+		align-items center
+		justify-content center
+		position relative
+		&-btn
+			wh(40px)
+			display block
+			bgc(RGB($orange))
+			border 2px solid RGB($orange)
+			position absolute
+			z-index 10
+			tr()
+			+desktop()
+				wh(81px,72px)
+				&:hover
+					bgc(transparent)
+			&:active
+				bgc(RGB($orange))
+				transform scale(0.9)
+			&-icon
+				wh(20px)
+				+desktop()
+					wh(32px)
+		&-prev
+			left 10px
+			+desktop()
+				left calc(50% - 485.5px)
+		&-next
+			right 10px
+			+desktop()
+				right calc(50% - 485.5px)
+	&-slides
+		wh(100%,calc((100vw - 40px) * .46))
+		df({
+			df: '.gallery-slides'
+			ali: center
+		})
+		overflow hidden
+		column-gap 20px
+		position relative
+		+desktop()
+			h(360px)
+			justify-content center
+	&-slide
+		wh(calc(100% - 40px),100%)
+		flex-shrink 0
+		tr()
+		+desktop()
+			w(774px)
+			trans(calc(100% + 117px),0)
+			position absolute
+			opacity 0
+		&:nth-child(1)
+			margin-left calc(-100% + 40px)
+			+desktop()
+				margin-left 0
+				trans(calc(-100% - 117px),0)
+		&:nth-child(2)
+			+desktop()
+				opacity 1
+				transform none
+		img
+			wh(100%)
+			object-fit cover
+			
 .contacts
+	.ondesk-img
+		+desktop()
+			&.top-right
+				w(149px)
+				transform rotate(180deg)
+				top 33px
+				right calc(50% - 520px)
+			&.bottom-right
+				w(270px)
+				top 50%
+				right calc(50% - 750px)
+				z-index 11
+			&.bottom-left
+				w(200px)
+				bottom 40px
+				left calc(50% - 750px)
 	&-map
 		wh(100%,55vw)
 		min-height 350px
@@ -486,10 +632,26 @@ body
 		&-text
 			color RGB($orange)
 		
+.solo
+	&-slides
+		position relative
+	&-slide
+		w(100%)
+		opacity 0
+		position absolute!important
+		left 0
+		top 0
+		tr()
+		&.active
+			opacity 1
+			position relative!important
 .foot
 	padding-top 50px
 	+tablet-large()
 		padding-top 98px
+	+desktop()
+		position relative
+		overflow hidden
 	&-row
 		p(20px 0)
 		df({
@@ -524,4 +686,20 @@ body
 		})
 		column-gap 44px
 		&-icon
-			wh(21px)
+			wh(28px)
+			svg
+				stroke RGB($white)
+				+desktop()
+					tr()
+		&-link
+			+desktop()
+				&:hover
+					svg
+						stroke RGB($orange)
+	.ondesk-img
+		+desktop()
+			w(138px)
+			transform rotate(90deg)
+			right calc(50% - 590px)
+			bottom -90px
+					

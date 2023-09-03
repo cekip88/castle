@@ -4,6 +4,8 @@ footer.foot
 		svg.lines-icon
 			use(xlink:href='/img/sprite.svg#slider-top')
 		+img('slider-top-line.png').lines-item
+	.ondesk-img
+		+img('tree-leaf.png')
 	.section
 		.foot-row
 			.foot-copy Copyright © 2020 — 2023 CASTEL.IL
@@ -15,15 +17,15 @@ footer.foot
 			ul.foot-soc
 				li.foot-soc-item
 					a(href='#').foot-soc-link
-						svg.foot-soc-icon
-							use(xlink:href='/img/sprite.svg#instagram')
+						.foot-soc-icon
+							include ../../img/instagram.svg
 				li.foot-soc-item
 					a(href='#').foot-soc-link
-						svg.foot-soc-icon
-							use(xlink:href='/img/sprite.svg#facebook')
+						.foot-soc-icon
+							include ../../img/facebook.svg
 				li.foot-soc-item
 					a(href='#').foot-soc-link
-						svg.foot-soc-icon
-							use(xlink:href='/img/sprite.svg#whatsapp')
+						.foot-soc-icon
+							include ../../img/whatsapp.svg
 	.section
 		+inc('js','front.js',false)(type="module")
