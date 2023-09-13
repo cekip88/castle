@@ -59,9 +59,9 @@ class Front extends G_G{
   		item.remove();
 	  },350)
 	}
-	closeModalByBgc({item}){
+	closeModalByBgc({item,event}){
   	const _ = this;
-  	if (!item.classList.contains('popup')) return;
+  	if (!event.target.classList.contains('popup')) return;
 
   	let closeBtn = item.querySelector('.popup-close');
   	if (!closeBtn) return;
@@ -272,18 +272,19 @@ class Front extends G_G{
 	}
 
 	changeLoginForm({item}){
-  	const _ = this;
-  	if (item.classList.contains('active')) return;
-  	let loginCont = item.closest('.popup-login');
-  	let targetId = item.getAttribute('data-target');
-  	let forms = loginCont.querySelectorAll('.form');
-  	let nav = item.closest('.login-header');
-  	nav.querySelector('.active').classList.remove('active');
-  	item.classList.add('active');
-  	forms.forEach(form=>{
-  		if (form.id == targetId) form.classList.add('active');
-  		else form.classList.remove('active')
-	  })
+		const _ = this;
+		if (item.classList.contains('active')) return;
+
+		let loginCont = item.closest('.popup-login');
+		let targetId = item.getAttribute('data-target');
+		let forms = loginCont.querySelectorAll('.form');
+		let nav = loginCont.querySelector('.login-header');
+		nav.querySelector('.active').classList.remove('active');
+		nav.querySelector(`[data-target="${item.getAttribute('data-target')}"]`).classList.add('active');
+		forms.forEach(form=>{
+			if (form.id == targetId) form.classList.add('active');
+			else form.classList.remove('active');
+		})
 	}
 
 	headNavActivePageShow(){
