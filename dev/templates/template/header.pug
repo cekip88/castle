@@ -1,7 +1,7 @@
 header.head
 	.section
 		.head-row
-			a(href='#').head-logo
+			a(href='/').head-logo
 				+img('logo.svg')
 			button.head-burger(data-click="front:burgerClick")
 				span.head-burger-line
@@ -9,16 +9,20 @@ header.head
 				span.head-burger-line
 		ul.head-nav
 			li.head-nav-item
-				a(href='#').head-nav-link.hover Home
-			li.head-nav-item
-				a(href='#').head-nav-link.hover Menu
+				a(href='/menu').head-nav-link.hover Menu
 			li.head-nav-item
 				a(href='#').head-nav-link.hover About
 			li.head-nav-item
-				a(href='#').head-nav-link.hover Login
+				button(data-click="front:showModal" data-target='.popup-login').head-nav-link.hover Login
 			li.head-nav-item
 				a(href='#').head-nav-link.hover Contacts
 		.head-address
 			svg.head-address-icon
 				use(xlink:href='/img/sprite.svg#compas')
 			span Ha-Atsma'ut St 85, Ashdod, 7745273
+main.main
+	.lines
+		+img('slider-top-line.png').lines-item
+		svg.lines-icon
+			use(xlink:href='/img/sprite.svg#slider-top')
+		+img('slider-top-line.png').lines-item

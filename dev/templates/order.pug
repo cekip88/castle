@@ -1,0 +1,123 @@
+extends template/main
+append vars
+	-
+		page_title = 'Order'
+block content
+	section.order
+		.ondesk-img.top-right
+			+img('lemon.png')
+		.ondesk-img.top-left
+			+img('tomato.png')
+		.section
+			button.btn-white.product-back
+				svg
+					use(xlink:href='/img/sprite.svg#back')
+				span Return
+			.order-row
+				ul.order-list
+					-for (let i = 0; i < 7; i++)
+						li.order-item
+							.order-item-img
+								+img('menu-img.jpg')
+							.order-item-info
+								h6.order-item-title BBQ Smoke
+								.price
+									.price-current $25.00
+									.price-old $35.00
+								.count
+									button(data-click="front:countChange").count-btn.minus
+										svg
+											use(xlink:href="/img/sprite.svg#minus")
+									input(data-input='front:countInput' value="1").count-input
+									button(data-input="front:countChange").count-btn.plus
+										svg
+											use(xlink:href="/img/sprite.svg#plus")
+				.order-card
+					h3.order-card-title Total
+					.order-card-line
+					.order-card-row
+						h6.order-card-title Products
+						.order-card-value.order-card-price $25.00
+					.order-card-row
+						h6.order-card-title Discount
+						.order-card-value.order-card-discount -$10.00
+					.order-card-row
+						h6.order-card-title Delivery
+						.order-card-value.order-card-delivery $00.00
+					.order-card-line
+					.order-card-row
+						h6.order-card-title To Be Paid
+						.order-card-value.order-card-total $25.00
+					.block-buttons
+						button.btn Go To Payment
+						button.btn-transparent
+							svg
+								use(xlink:href='/img/sprite.svg#basket')
+							span Clear
+	section.block.recommend.recommend-order
+		.ondesk-img.top-right
+			+img('garlic.png')
+		.ondesk-img.top-left
+			+img('pepper.png')
+		.ondesk-img.bottom-right
+			+img('tomato.png')
+		.section
+			h2.title With this order
+			ul.recommend-list
+				-for (let i = 0; i < 2; i++)
+					li.recommend-item
+						.recommend-item-img
+							+img('recommend-1.jpg')
+						h5.recommend-item-title BBQ SMOKE
+						p.recommend-item-text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+						.block-buttons
+							a(href="/order").btn Add to order
+							a(href='/product').btn-transparent More Info
+							span.block-buttons-right $25.00
+					li.recommend-item
+						.recommend-item-img
+							+img('recommend-2.jpg')
+						h5.recommend-item-title BURGER & french fries
+						p.recommend-item-text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+						.block-buttons
+							a(href="/order").btn Add to order
+							a(href='/product').btn-transparent More Info
+							span.block-buttons-right $25.00
+	section.block.contacts.contacts-order
+		.ondesk-img.top-left
+			+img('lemon.png')
+		.ondesk-img.top-right
+			+img('tree-leaf.png')
+		.section
+			h2.title all roads lead to us
+			.contacts-map
+				iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6782.889375175314!2d34.64651644454201!3d31.78562855557878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502a2f920e8e5e3%3A0xa0a1f02bdd2358c2!2zSGFBdHNtYXV0IDg1LCBBc2hkb2QsINCY0LfRgNCw0LjQu9GM!5e0!3m2!1sru!2skz!4v1693640434544!5m2!1sru!2skz" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+			ul.contacts-list
+				li.contacts-item
+					.contacts-item-left
+						svg.contacts-item-icon
+							use(xlink:href='/img/sprite.svg#phone')
+					.contacts-item-right
+						h6.contacts-item-title Phone
+						a(href='tel:+972 54 956 1777').contacts-item-text +972 54 956 1777
+				li.contacts-item
+					.contacts-item-left
+						svg.contacts-item-icon
+							use(xlink:href='/img/sprite.svg#mail')
+					.contacts-item-right
+						h6.contacts-item-title E-MAIL
+						a(href='mailto:booking@castel.IL').contacts-item-text booking@castel.IL
+				li.contacts-item
+					.contacts-item-left
+						svg.contacts-item-icon
+							use(xlink:href='/img/sprite.svg#mail')
+					.contacts-item-right
+						h6.contacts-item-title E-MAIL
+						a(href='mailto:ORDER@castel.IL').contacts-item-text ORDER@castel.IL
+				li.contacts-item
+					.contacts-item-left
+						svg.contacts-item-icon
+							use(xlink:href='/img/sprite.svg#compas')
+					.contacts-item-right
+						h6.contacts-item-title ADDRESS
+						a(href="https://www.google.com/maps/place/Castle,+Ha-Atsma'ut+St+85,+Ashdod,+7745273,+Израиль/@31.7879589,34.6442903,19z/data=!4m14!1m7!3m6!1s0x1502a2f920e8e5e3:0xa0a1f02bdd2358c2!2zSGFBdHNtYXV0IDg1LCBBc2hkb2QsINCY0LfRgNCw0LjQu9GM!8m2!3d31.7879589!4d34.6442903!16s%2Fg%2F11rgfjfbql!3m5!1s0x1502a2f8d7cd6a79:0xa2aa051b7a32d1ae!8m2!3d31.7879589!4d34.6442903!16s%2Fg%2F11bx2k9x74" target="_blank").contacts-item-text Ha-Atsma'ut St 85, Ashdod

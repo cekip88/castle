@@ -9,14 +9,65 @@ class Front extends G_G{
 	    .on(_,'galleryPrev',_.galleryPrev.bind(_))
 	    .on(_,'galleryNext',_.galleryNext.bind(_))
 	    .on(_,'soloSlideChange',_.soloSlideChange.bind(_))
+	    .on(_,'showModal',_.showModal.bind(_))
+	    .on(_,'closeModal',_.closeModal.bind(_))
+	    .on(_,'closeModalByBgc',_.closeModalByBgc.bind(_))
+	    .on(_,'changeLoginForm',_.changeLoginForm.bind(_))
   }
   define(){
     const _ = this;
     _.componentName = 'front';
     _.head = _.f('.head');
     _.body = document.body;
+    _.resolution = _.getResolution();
     _.init();
   }
+
+	showModal({item}){
+  	const _ = this;
+  	let bgc = _.f('.popup');
+  	let modalSelector = item.getAttribute('data-target');
+  	if (!modalSelector) return;
+
+  	let modal = _.f(`${modalSelector}`);
+  	_.activeModalParent = modal.parentElement;
+  	bgc.classList.add('active');
+  	bgc.append(modal);
+  	_.body.classList.add('noScroll');
+  	modal.prepend(_.markup(`
+  	  <button class="popup-close" data-click="${_.componentName}:closeModal">
+				<svg>
+					<use xlink:href="/img/sprite.svg#popup-close"></use>
+				</svg>
+			</button>
+		`))
+
+  	setTimeout(()=>{
+		  modal.classList.add('visible');
+	  })
+	}
+	closeModal({item}){
+  	const _ = this;
+
+  	let modal = item.parentElement;
+  	modal.classList.remove('visible');
+
+  	setTimeout(()=>{
+			_.body.classList.remove('noScroll');
+		  _.f('.popup').classList.remove('active');
+  		_.activeModalParent.append(modal);
+  		item.remove();
+	  },350)
+	}
+	closeModalByBgc({item}){
+  	const _ = this;
+  	if (!item.classList.contains('popup')) return;
+
+  	let closeBtn = item.querySelector('.popup-close');
+  	if (!closeBtn) return;
+
+  	_.closeModal({item:closeBtn})
+	}
 
 	burgerClick({item}){
   	const _ = this;
@@ -86,11 +137,19 @@ class Front extends G_G{
 			slides = slider.querySelector('.solo-slides'),
 			slidesCount = slides.children.length;
 		let maxHeight = 0;
-		for (let i = 0; i < slidesCount; i++) {
-			let slide = slides.children[i];
-			if (maxHeight < slide.clientHeight) maxHeight = slide.clientHeight;
-		}
-		slides.style = `height:${maxHeight}px;`;
+		slides.style = '';
+		slides.classList.add('noTransition');
+		let active = slides.querySelector('.active');
+		if (active) active.classList.remove('active');
+		setTimeout(()=>{
+			for (let i = 0; i < slidesCount; i++) {
+				let slide = slides.children[i];
+				if (maxHeight < slide.clientHeight) maxHeight = slide.clientHeight;
+			}
+			if (active) active.classList.add('active');
+			slides.style = `height:${maxHeight}px;`;
+			slides.classList.remove('noTransition');
+		})
 	}
 	getDotTpl(active = false,index){
   	const _ = this;
@@ -211,15 +270,63 @@ class Front extends G_G{
 			slides.append(slides.firstElementChild)
 		}
 	}
+
+	changeLoginForm({item}){
+  	const _ = this;
+  	if (item.classList.contains('active')) return;
+  	let loginCont = item.closest('.popup-login');
+  	let targetId = item.getAttribute('data-target');
+  	let forms = loginCont.querySelectorAll('.form');
+  	let nav = item.closest('.login-header');
+  	nav.querySelector('.active').classList.remove('active');
+  	item.classList.add('active');
+  	forms.forEach(form=>{
+  		if (form.id == targetId) form.classList.add('active');
+  		else form.classList.remove('active')
+	  })
+	}
+
+	headNavActivePageShow(){
+  	const _ = this;
+  	let navBtns = _.f('a.head-nav-link');
+  	navBtns.forEach(link=>{
+		  if (location.href.indexOf(link.href) >= 0) link.classList.add('active')
+	  })
+	}
+
+	getResolution(){
+  	let
+		  resolution = '',
+		  width = window.innerWidth;
+		if (width < 768) resolution = 'mobile';
+		else if (width < 1024) resolution = 'tablet';
+		else if (width < 1200) resolution = 'tablet-large';
+		else resolution = 'desktop';
+  	return resolution;
+	}
+	changeResolution(){
+  	const _ = this;
+  	let resolution = _.getResolution();
+  	if (!_.resolution || _.resolution != resolution) {
+  		_.resolution = resolution;
+  		_.reInits();
+	  }
+	}
+
+	reInits(){
+  	const _ = this;
+		_.soloSlidersReInit();
+		_.gallerySlidersReInit();
+	}
 	
 	init(){
   	const _ = this;
   	_.soloSlidersInit();
   	_.gallerySlidersInit();
+  	_.headNavActivePageShow();
   	
   	window.addEventListener('resize',(e)=>{
-  		_.soloSlidersReInit();
-  		_.gallerySlidersReInit();
+  		_.changeResolution();
 	  })
 	}
 }

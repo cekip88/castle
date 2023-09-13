@@ -4,8 +4,6 @@ footer.foot
 		svg.lines-icon
 			use(xlink:href='/img/sprite.svg#slider-top')
 		+img('slider-top-line.png').lines-item
-	.ondesk-img
-		+img('tree-leaf.png')
 	.section
 		.foot-row
 			.foot-copy Copyright © 2020 — 2023 CASTEL.IL
@@ -29,3 +27,44 @@ footer.foot
 							include ../../img/whatsapp.svg
 	.section
 		+inc('js','front.js',false)(type="module")
+	.popup(data-click='front:closeModalByBgc')
+	.section
+		.hidden
+			.popup-body.popup-login
+				.login-header
+					button.login-header-btn.active(data-target="loginForm" data-click='front:changeLoginForm') Login
+					button.login-header-btn(data-target="signupForm" data-click='front:changeLoginForm') Signup
+				form.form.login-form.active#loginForm
+					label.form-label
+						span.form-label-text Login
+						input(type='text' name="login").form-input
+					label.form-label
+						span.form-label-text Password
+						input(type='password' name="password").form-input
+					button.btn.form-btn Login
+					//.login-spacer or log in with
+					//.login-buttons
+					//	button.login-button(type='button')
+					//		svg
+					//			use(xlink:href='/img/sprite.svg#google')
+					//		span Google
+					//	button.login-button(type='button')
+					//		svg
+					//			use(xlink:href='/img/sprite.svg#apple')
+					//		span Apple ID
+					button.login-route-link Forgot your password?
+				form.form.login-form#signupForm
+					label.form-label
+						span.form-label-text Login
+						input(type='text' name="login").form-input
+					label.form-label
+						span.form-label-text E-mail
+						input(type='text' name="mail").form-input
+					label.form-label
+						span.form-label-text Password
+						input(type='password' name="password").form-input
+					label.form-label
+						span.form-label-text Confirm Password
+						input(type='password' name="confirm_password").form-input
+					button.btn.form-btn Signup
+					button.login-route-link(type="button" data-target="loginForm" data-click="front:changeLoginForm") or go to the login tab

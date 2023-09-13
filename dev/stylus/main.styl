@@ -3,6 +3,8 @@
 @import groups
 
 font_inc($f_bold,'Gilroy-Bold.woff2')
+font_inc($google_bold,'GoogleSans-Bold.woff2')
+font_inc($google_reg,'GoogleSans-Regular.woff2')
 
 *
 	m(0)
@@ -13,22 +15,26 @@ font_inc($f_bold,'Gilroy-Bold.woff2')
 button,input
 	background none
 	border none
+	outline none
 
 	
 img,svg
 	max-width 100%
+svg
+	wh(28px)
 
 	
 a,button
 	font 1em $f_bold
-	text-transform uppercase
+	color RGB($white)
 	text-decoration none
 	cursor pointer
 
 ul,ol,dl
 	list-style none
 
-
+.set
+	overflow hidden
 body
 	font 14px $f_bold
 	color RGB($white)
@@ -42,6 +48,8 @@ body
 		absolute top 0 left 0
 		z-index -1
 
+	&.noScroll
+		overflow hidden
 		
 .section
 	w(100%)
@@ -56,13 +64,16 @@ body
 	
 .notScrollable
 	overflow hidden
+.noTransition,.noTransition * {
+	transition: none!important;
+}
 
-	
+.hidden
+	dn()
 .head
 	wh(100%,80px)
 	p(10px 0)
 	overflow hidden
-	text-transform uppercase
 	absolute top 0 left 0
 	z-index 100
 	tr()
@@ -147,7 +158,10 @@ body
 		+desktop()
 			column-gap 40px
 		&-link
-			color RGB($white)
+			&.active
+				color RGB($orange)
+			+tablet()
+				text-transform uppercase
 	&-address
 		margin-top auto
 		margin-bottom 30px
@@ -157,6 +171,8 @@ body
 		})
 		column-gap 10px
 		color RGB($white)
+		+tablet()
+			text-transform uppercase
 		+tablet-large()
 			m(0)
 		&-icon
@@ -164,19 +180,45 @@ body
 
 
 .btn
-	wh(160px,72px)
-	bgc(RGB($orange))
-	color RGB($white)
-	text-transform uppercase
-	+tablet()
-		w(180px)
+	&,&-transparent
+		h(56px)
+		p(0 20px)
+		df({
+			df: '.btn'
+			ali: center
+			jus: center
+		})
+		column-gap 10px
+		bgc(RGB($orange))
+		text-transform uppercase
+		+desktop()
+			w(180px)
+		+desktop()
+			h(72px)
+			tr()
 	+desktop()
-		border 2px solid RGB($orange)
-		tr()
 		&:hover
-			bgc(transparent)
-
-	
+			bgc(RGB($white))
+			color RGB($orange)
+	&-transparent
+		border 2px solid RGB($orange)
+		bgc(transparent)
+		&:hover
+			border-color RGB($white)
+			color RGB($orange)
+	&-white
+		p(3px 15px)
+		df({
+			df: '.btn-white'
+			ali: center
+			jus: center
+		})
+		column-gap 10px
+		bgc(RGB($white))
+		border-radius 17px
+		text-transform uppercase
+		font-size 14px
+		color RGB($black)
 .hover
 	+desktop()
 		position relative
@@ -207,11 +249,11 @@ body
 	
 .block
 	padding-top 60px
+	position relative
 	+tablet()
 		padding-top 90px
 	+desktop()
 		padding-top 120px
-		position relative
 	.title
 		m(0 0 20px)
 		+tablet-large()
@@ -219,14 +261,24 @@ body
 	&-buttons
 		df({
 			df: '.block-buttons'
-			ali: center
 		})
-		column-gap 20px
+		column-gap 18px
 		text-transform uppercase
-		+tablet()
-			column-gap 40px
+		.btn
+			&:nth-child(2)
+				bgc(transparent)
+				+desktop()
+					&:hover
+						bgc(RGB($orange))
 		&-right
-			color RGB($white)
+			df({
+				df: '.block-buttons-right'
+				ali: center
+			})
+			+tablet()
+				flex-shrink 0
+			+tablet-large()
+				margin-left 22px
 
 
 .lines
@@ -282,11 +334,10 @@ body
 				m(0)
 				p(10px 7px)
 				flex-direction column
+				row-gap 40px
 				position absolute
 				z-index 10
 				right 20px
-			+tablet-large()
-				row-gap 40px
 			+desktop()
 				right calc(50% - (1170px / 2))
 		&-dot
@@ -300,19 +351,20 @@ body
 			&.active
 				bgc(RGB($orange))
 		.ondesk-img
-			&.top
-				width: (141px)
-				left calc(50% - 660px)
-				top 5px
-				z-index 11
-			&.middle
-				right calc(50% - 800px)
-				z-index 11
-			&.bottom
-				w(149px)
-				bottom -85px
-				left calc(50% - 680px)
-				transform rotate(-180deg)
+			+desktop()
+				&.top
+					w(203px)
+					top -10px
+					left calc(50% - 660px)
+					z-index 11
+				&.middle
+					right calc(50% - 800px)
+					z-index 11
+				&.bottom
+					w(149px)
+					bottom -85px
+					left calc(50% - 680px)
+					transform rotate(-180deg)
 	&-slides
 		w(100%)
 		df({
@@ -320,6 +372,7 @@ body
 			ali: stretch
 		})
 		overflow hidden
+		box-shadow 0 10px 40px 0 rgba(0,0,0,.60)
 		+desktop()
 			position relative
 			z-index 10
@@ -340,7 +393,7 @@ body
 		+desktop()
 			h(744px)
 		&-bgc
-			wh(100vw,38.75vw)
+			wh(100vw,220px)
 			opacity .9
 			+tablet()
 				wh(100%)
@@ -351,6 +404,7 @@ body
 				object-fit cover
 		&-info
 			w(100%)
+			max-width 320px
 			p(20px 10px)
 			color RGB($white)
 			+tablet()
@@ -406,7 +460,7 @@ body
 			+tablet-large()
 				h(226px)
 			+desktop()
-				h(269px)
+				h(264px)
 			img
 				wh(100%)
 				object-fit cover
@@ -421,30 +475,29 @@ body
 			lih(1.75)
 			+tablet-large()
 				font-size 16px
-			
-			
-	.ondesk-img
-		+desktop()
-			&.top-right
-				top 10px
-				right calc(50% - 700px)
-			&.top-left
-				top 250px
-				left calc(50% - 740px)
-			&.bottom-right
-				top 610px
-				right calc(50% - 700px)
-			&.bottom-left
-				transform rotateY(180deg)
-				bottom -150px
-				left calc(50% - 770px)
+	&-main
+		.ondesk-img
+			+desktop()
+				&.top-right
+					top 10px
+					right calc(50% - 700px)
+				&.top-left
+					top 250px
+					left calc(50% - 740px)
+				&.bottom-right
+					top 610px
+					right calc(50% - 700px)
+				&.bottom-left
+					bottom -150px
+					transform rotateY(180deg)
+					left calc(50% - 770px)
 .building
 	.ondesk-img
 		+desktop()
 			w 210px
-			transform rotateY(180deg) rotate(30deg)
 			top 140px
 			right calc(50% - 740px)
+			transform rotateY(180deg) rotate(30deg)
 	&-list
 		df({
 			df: '.building-list'
@@ -577,25 +630,32 @@ body
 			object-fit cover
 			
 .contacts
-	.ondesk-img
-		+desktop()
-			&.top-right
-				w(149px)
-				transform rotate(180deg)
-				top 33px
-				right calc(50% - 520px)
-			&.bottom-right
-				w(270px)
-				top 50%
-				right calc(50% - 750px)
-				z-index 11
-			&.bottom-left
-				w(200px)
-				bottom 40px
-				left calc(50% - 750px)
+	&-main
+		.ondesk-img
+			+desktop()
+				&.top-right
+					w(149px)
+					transform rotate(180deg)
+					top 33px
+					right calc(50% - 520px)
+					z-index 11
+				&.bottom-right
+					w(270px)
+					top 50%
+					right calc(50% - 750px)
+					z-index 1
+				&.bottom-left
+					w(200px)
+					bottom 40px
+					left calc(50% - 750px)
+				&.footer-right
+					right calc(50% - 610px)
+					bottom -420px
+					transform rotate(185deg) rotateY(180deg) scale(.8)
 	&-map
 		wh(100%,55vw)
 		min-height 350px
+		box-shadow 0 4px 4px 0 rgba(0,0,0,.25)
 		+desktop()
 			h(648px)
 		iframe
@@ -610,6 +670,8 @@ body
 		})
 		flex-wrap wrap
 		row-gap 20px
+		+desktop()
+			position relative
 		+tablet-large()
 			padding-top 35px
 	&-item
@@ -623,11 +685,9 @@ body
 			w(50%)
 		+desktop()
 			w(initial)
-		&-icon
-			wh(28px)
 		&-title,&-text
 			font-size 20px
-			letter-spacing -2%
+			letter-spacing -0.02em
 			text-transform uppercase
 		&-text
 			color RGB($orange)
@@ -635,6 +695,7 @@ body
 .solo
 	&-slides
 		position relative
+		box-shadow 0 4px 4px rgba(0,0,0,.25)
 	&-slide
 		w(100%)
 		opacity 0
@@ -675,9 +736,8 @@ body
 		+tablet-large()
 			position absolute
 			left 50%
-			trans(-50%)
+			trans(-50%,0)
 	&-link
-		color RGB($white)
 		text-transform uppercase
 	&-soc
 		df({
@@ -702,4 +762,458 @@ body
 			transform rotate(90deg)
 			right calc(50% - 590px)
 			bottom -90px
-					
+
+
+.popup
+	wh(100%)
+	df({
+		df: '.popup'
+		ali: center
+		jus: center
+	})
+	background rgba(19,19,19,.40)
+	backdrop-filter blur(5px)
+	fixed top 0 left 0
+	opacity 0
+	visibility hidden
+	&.active
+		opacity 1
+		visibility visible
+		z-index 100000
+	&-body
+		w(100%)
+		max-width calc(100% - 40px)
+		border-radius 10px
+		bgc(RGB($white))
+		position relative
+		transform scale(.8)
+		tr()
+		+tablet()
+			w(initial)
+		&.visible
+			opacity 1
+			visibility visible
+			transform scale(1)
+	&-close
+		wh(34px)
+		position absolute
+		top -40px
+		left calc(100% - 34px)
+		+tablet()
+			top 0
+			left calc(100% + 20px)
+		+desktop()
+			tr()
+			&:hover
+				transform rotate(180deg)
+		svg
+			wh(100%)
+	&-login
+		w(100%!important)
+		max-width 576px
+		opacity 0
+		visibility hidden
+		tr()
+.form
+	p(20px)
+	df({
+		df: '.form'
+		ali: flex-start
+	})
+	flex-direction column
+	row-gap 20px
+	color RGB($black)
+	+tablet()
+		p(30px)
+	+tablet-large()
+		p(50px)
+	+desktop()
+		p(70px 65px)
+	&-label
+		w(100%)
+		df({
+			df: '.form-label'
+			ali: flex-start
+		})
+		flex-direction column
+		row-gap 6px
+		&-text
+			font 20px $f_bold
+			letter-spacing -0.02em
+	&-input
+		wh(100%,52px)
+		p(0 20px)
+		border-bottom 4px solid rgba(198,107,16,.2)
+		box-shadow 0 0 4px 0 rgba(0, 0, 0, 0.10)
+		tr()
+		&:focus
+			border-bottom-color RGB($orange)
+		+tablet-large()
+			h(72px)
+	.btn
+		w(100%)
+		+desktop()
+			&:hover
+				color RGB($orange)
+.login
+	&-header
+		p(40px 0)
+		df({
+			df: '.login-header'
+			ali: center
+			jus: center
+		})
+		column-gap 40px
+		position relative
+		&:after
+			af()
+			wh(100%,4px)
+			background-image: url('/img/slider-top-line.png')
+			position absolute
+			bottom -2px
+			left 0
+		&-btn
+			font 20px $google_bold
+			color RGB($black)
+			tr()
+			&.active
+				color RGB($orange)
+			+desktop()
+				tr()
+				position relative
+				&:after
+					af()
+					wh(0,2px)
+					bgc(RGB($orange))
+					position absolute
+					left 50%
+					bottom 0
+					tr()
+				&:not(.active):hover
+					color RGB($orange)
+					&:after
+						w(100%)
+						left 0
+	&-form
+		w(100%)
+		df({
+			df: '.login-form'
+			ali: flex-start
+		})
+		flex-direction column
+		opacity 0
+		visibility hidden
+		position absolute
+		tr()
+		&.active
+			opacity 1
+			visibility visible
+			position static
+	&-spacer
+		w(100%)
+		df({
+			df: '.login-spacer'
+			ali: center
+		})
+		column-gap 20px
+		font 12px $google_reg
+		white-space nowrap
+		text-transform lowercase
+		color rgba(19,19,19,.6)
+		lih(20px)
+		&:before,&:after
+			af()
+			wh(100%,1px)
+			bgc(RGB($gray))
+	&-buttons
+		w(100%)
+		df({
+			df: '.login-buttons'
+			ali: center
+		})
+		column-gap 10px
+		+tablet()
+			column-gap 20px
+	&-button
+		w(100%)
+		p(12px)
+		df({
+			df: '.login-button'
+			ali: center
+			jus: center
+		})
+		border-radius 36px
+		column-gap 10px
+		box-shadow 0 0 4px 0 rgba(198,107,16,.2)
+		text-transform initial
+		color RGB($black)
+		+tablet()
+			column-gap 20px
+		+desktop()
+			border 2px solid transparent
+			tr()
+			&:hover
+				border-color RGB($orange)
+	&-route-link
+		m(0 auto)
+		display block
+		text-transform initial
+		font 12px $google_bold
+		color RGB($orange)
+		+desktop()
+			position relative
+			&:after
+				af()
+				wh(0,1px)
+				bgc(RGB($orange))
+				position absolute
+				bottom 0
+				left 50%
+				tr()
+			&:hover:after
+				w(100%)
+				left 0
+.menu
+	padding-top 20px
+	+desktop()
+		padding-top 30px
+	&-nav
+		padding-bottom 6px
+		margin-bottom 20px
+		df({
+			df: '.menu-nav'
+			ali: center
+			jus: space-between
+		})
+		&:after
+			bottom 2px
+		+tablet()
+			margin-bottom 30px
+			column-gap 40px
+			justify-content flex-start
+		+tablet-large()
+			margin-bottom 40px
+		+desktop()
+			margin-bottom 56px
+		&,&-btn
+			position relative
+			&:after
+				af()
+				wh(100%,2px)
+				bgc(RGB($white))
+				position absolute
+				left 0
+		&-btn
+			lih(16px)
+			+tablet()
+				text-transform uppercase
+			+desktop()
+				tr()
+				&:hover
+					color RGB($orange)
+			&.active
+				color RGB($orange)
+				&:after
+					bgc(RGB($orange))
+			&:after
+				z-index 1
+				bottom -4px
+.price
+	df({
+		df: '.price'
+		ali: center
+	})
+	column-gap 20px
+	&-old
+		text-decoration line-through
+		color RGB($red)
+.product
+	&-back
+		position absolute
+		top 10px
+		+tablet()
+			top 20px
+	&-card
+		+tablet-large()
+			display flex
+			align-items stretch
+			column-gap 18px
+		&-img
+			wh(100%,200px)
+			box-shadow 0 4px 4px 0 rgba(0,0,0,.25)
+			+tablet()
+				h(300px)
+			+tablet-large()
+				wh(calc(50% - 9px),360px)
+				flex-shrink 0
+			img
+				wh(100%)
+				object-fit cover
+		&-info
+			margin-top 20px
+			df({
+				df: '.product-card-info'
+			})
+			flex-direction column
+			+tablet-large()
+				m(0)
+		&-title,&-weight
+			font-size 20px
+			letter-spacing -0.02em
+		&-text
+			m(10px 0 20px)
+			+tablet-large()
+				font-size 16px
+				lih(28px)
+		&-weight
+			margin-bottom 20px
+		.block-buttons
+			+tablet-large()
+				margin-top auto
+.order
+	&-row
+		df({
+			df: '.order-row'
+		})
+		flex-direction column
+		row-gap 20px
+		+tablet-large()
+			align-items flex-start
+			flex-direction row
+			column-gap 18px
+	&-list
+		w(100%)
+		df({
+			df: '.order-list'
+		})
+		flex-direction column
+		row-gap 24px
+	&-item
+		border-radius 10px
+		align-items stretch
+		bgc(RGB($white))
+		box-shadow 0 4px 40px 0 rgba(0,0,0,.4)
+		overflow hidden
+		color RGB($black)
+		&,&-info
+			df({
+				df: '.order-item'
+				ali: center
+			})
+		&-info
+			w(100%)
+			p(10px 16px 10px 20px)
+			column-gap 20px
+			row-gap 10px
+			flex-wrap wrap
+		&-img
+			w(120px)
+			flex-shrink 0
+			box-shadow 0 4px 4px 0 rgba(0,0,0,.25)
+			+tablet()
+				wh(81px,72px)
+			img
+				wh(100%)
+				object-fit cover
+		&-title
+			font-size 20px
+		.price
+			+tablet()
+				margin-left 20px
+		.count
+			+tablet()
+				margin-left auto
+	&-card
+		p(30px)
+		df({
+			df: '.order-card'
+		})
+		flex-direction column
+		flex-shrink 0
+		row-gap 20px
+		bgc(RGB($white))
+		border-radius 10px
+		color RGB($black)
+		+desktop()
+			p(52px 50px)
+		&-line
+			wh(100%,2px)
+			bgc(RGB($black))
+			flex-shrink 0
+		&-row
+			df({
+				df: '.order-card-row'
+				ali: center
+				jus: space-between
+			})
+		&-title
+			font-size 20px
+			text-transform uppercase
+		&-discount
+			color RGB($red)
+		.block-buttons
+			margin-top 10px
+		.btn
+			+desktop()
+				&:hover
+					bgc(RGB($black))
+					color RGB($white)
+			&-transparent
+				color RGB($black)
+				use
+					stroke #131313
+				+desktop()
+					use
+						tr()
+					&:hover
+						color RGB($orange)
+						border-color RGB($black)
+						use
+							stroke RGB($orange)
+.count
+	p(3px 5px)
+	df({
+		df: '.count'
+		ali: center
+	})
+	column-gap 10px
+	border-radius 17px
+	bgc(rgba(198,107,16,.2))
+	&-btn
+		flex-shrink 0
+	&-input
+		w(100%)
+		text-align center
+		font 16px $f_bold
+		+tablet()
+			w(91px)
+.history
+	&-title
+		+tablet-large()
+			position absolute
+			top 15px
+			left 50%
+			trans(-50%,0)
+		+desktop()
+			top 6px
+	&-item
+		&-info
+			+tablet-large()
+				justify-content space-between
+		.price
+			w(100%)
+			+tablet()
+				w(initial)
+				margin-left 0
+	&-address
+		+tablet()
+			w(100%)
+		+tablet-large()
+			w(initial)
+.calendar
+	&-head
+		svg
+			&:last-child
+				wh(10px,5px)
+		&-arrow
+			margin-left 13px
