@@ -16,15 +16,18 @@ footer.foot
 				li.foot-soc-item
 					a(href='#').foot-soc-link
 						.foot-soc-icon
-							include ../../img/instagram.svg
+							svg
+								use(xlink:href='/img/sprite.svg#instagram')
 				li.foot-soc-item
 					a(href='#').foot-soc-link
 						.foot-soc-icon
-							include ../../img/facebook.svg
+							svg
+								use(xlink:href='/img/sprite.svg#facebook')
 				li.foot-soc-item
 					a(href='#').foot-soc-link
 						.foot-soc-icon
-							include ../../img/whatsapp.svg
+							svg
+								use(xlink:href='/img/sprite.svg#whatsapp')
 	.section
 		+inc('js','front.js',false)(type="module")
 	.popup(data-click='front:closeModalByBgc')

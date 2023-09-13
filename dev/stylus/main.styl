@@ -767,15 +767,16 @@ body
 		})
 		column-gap 44px
 		&-icon
-			wh(28px)
 			svg
+				wh(28px)
+			use
 				stroke RGB($white)
 				+desktop()
 					tr()
 		&-link
 			+desktop()
 				&:hover
-					svg
+					use
 						stroke RGB($orange)
 	.ondesk-img
 		+desktop()
