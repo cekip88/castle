@@ -154,14 +154,25 @@ body
 			p(0)
 			order 2
 			flex-direction row
+			align-items center
 			column-gap 20px
 		+desktop()
 			column-gap 40px
 		&-link
-			&.active
-				color RGB($orange)
 			+tablet()
 				text-transform uppercase
+			+desktop()
+				&:hover
+					use
+						stroke RGB($orange)
+			&.active
+				color RGB($orange)
+				use
+					stroke RGB($orange)
+			use
+				stroke RGB($white)
+				+desktop()
+					tr()
 	&-address
 		margin-top auto
 		margin-bottom 30px
@@ -219,6 +230,16 @@ body
 		text-transform uppercase
 		font-size 14px
 		color RGB($black)
+		use
+			stroke RGB($black)
+		+desktop()
+			&,use
+				tr()
+			&:hover
+				bgc(RGB($orange))
+				color RGB($white)
+				use
+					stroke RGB($white)
 .hover
 	+desktop()
 		position relative

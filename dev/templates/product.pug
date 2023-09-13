@@ -3,7 +3,7 @@ append vars
 	-
 		page_title = 'Product'
 block content
-	section.product
+	section.product.block
 		.ondesk-img.top-left
 			+img('tree-leaf.png')
 		.ondesk-img.top-right
@@ -11,7 +11,7 @@ block content
 		.ondesk-img.bottom-left
 			+img('lemon.png')
 		.section
-			button.btn-white.product-back
+			a(href="/menu").btn-white.product-back
 				svg
 					use(xlink:href='/img/sprite.svg#back')
 				span Return

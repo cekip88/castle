@@ -3,13 +3,13 @@ append vars
 	-
 		page_title = 'Order'
 block content
-	section.order
+	section.order.block
 		.ondesk-img.top-right
 			+img('lemon.png')
 		.ondesk-img.top-left
 			+img('tomato.png')
 		.section
-			button.btn-white.product-back
+			a(href="/product").btn-white.product-back
 				svg
 					use(xlink:href='/img/sprite.svg#back')
 				span Return
