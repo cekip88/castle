@@ -33,7 +33,6 @@ class Front extends G_G{
 	}
 	dateToFormat(date){
 		const _ = this;
-
 		let month = _.getMonth(date),
 			year = _.getYear(date),
 			day = date.getDate();
@@ -59,6 +58,12 @@ class Front extends G_G{
 	setEndDate(){
 		const _ = this;
 		let input = _.cont.querySelector(`INPUT[name="${_.name}_to"]`);
+
+		if (!_.dates[_.name]['end']) {
+			_.head.querySelector('.calendar-head-end').textContent = '';
+			input.value = '';
+			return;
+		}
 		input.value = _.dateToFormatForValue(_.dates[_.name]['end']);
 		_.head.querySelector('.calendar-head-end').textContent = _.dateToFormat(_.dates[_.name]['end']);
 	}
@@ -116,6 +121,7 @@ class Front extends G_G{
 	}
 	close(){
 		const _ = this;
+		if (!_.dates[_.name]['end']) return;
 		_.head.classList.remove('active');
 		_.body.remove();
 		_.body = null;
@@ -241,6 +247,10 @@ class Front extends G_G{
 			item.classList.add('active');
 			_.dates[_.name]['start'] = new Date(`${year}-${month}-${day}`);
 			_.setStartDate(_.dates[_.name]['start']);
+
+			_.dates[_.name]['end'] = null;
+			_.setEndDate();
+
 			_.firstClick = false;
 		} else {
 			let endDate = new Date(`${year}-${month}-${day}`);
@@ -267,16 +277,17 @@ class Front extends G_G{
 		if (!name) {
 			name = `calendar-${Math.ceil(Math.random() * 1000)}`;
 		}
+
 		let
 			fromInput = calendar.querySelector(`INPUT[name="${name}_from"]`),
 			toInput = calendar.querySelector(`INPUT[name="${name}_to"]`);
 
 		if (!fromInput) {
-			fromInput = _.markupElement(`<input type="hidden" name="${_.name}_from">`);
+			fromInput = _.markupElement(`<input type="hidden" name="${name}_from">`);
 			calendar.prepend(fromInput);
 		}
 		if (!toInput) {
-			toInput = _.markupElement(`<input type="hidden" name="${_.name}_to">`);
+			toInput = _.markupElement(`<input type="hidden" name="${name}_to">`);
 			calendar.prepend(toInput);
 		}
 
