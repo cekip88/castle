@@ -313,6 +313,9 @@ body
 	})
 	column-gap 20px
 	overflow hidden
+	+desktop()
+		position relative
+		z-index 1
 	&-icon
 		wh(20px)
 		flex-shrink 0
@@ -515,6 +518,66 @@ body
 					bottom -150px
 					transform rotateY(180deg)
 					left calc(50% - 770px)
+	&-menu
+		+desktop()
+			.ondesk-img
+				&.left
+					left calc(50% - 750px)
+					top 20px
+				&.right
+					top 350px
+					right calc(50% - 670px)
+					transform rotateY(180deg)
+
+	&-product
+		.ondesk-img
+			+desktop()
+				&.top
+					&-right
+						top 170px
+						right calc(50% - 700px)
+					&-left
+						top 670px
+						left calc(50% - 790px)
+						transform rotateY(180deg) scale(1.5)
+				&.bottom
+					&-right
+						bottom 90px
+						right calc(50% - 730px)
+						transform rotateY(180deg) scale(1.5) rotate(45deg)
+	&-order
+		.ondesk-img
+			+desktop()
+				&.top
+					&-right
+						top 160px
+						right calc(50% - 780px)
+						transform scale(1.5)
+					&-left
+						top 370px
+						left calc(50% - 770px)
+						transform scale(1.5) rotate(40deg)
+				&.bottom
+					&-right
+						bottom 120px
+						right calc(50% - 710px)
+						transform scale(1.2)
+		&-history
+			.ondesk-img
+				+desktop()
+					&.top
+						&-right
+							top 80px
+							right calc(50% - 700px)
+						&-left
+							top 580px
+							left calc(50% - 800px)
+							transform rotateY(180deg) scale(1.3)
+					&.bottom
+						&-right
+							bottom 150px
+							right calc(50% - 730px)
+							transform rotateY(180deg) rotate(38deg) scale(1.4)
 .building
 	.ondesk-img
 		+desktop()
@@ -655,8 +718,8 @@ body
 			
 .contacts
 	&-main
-		.ondesk-img
-			+desktop()
+		+desktop()
+			.ondesk-img
 				&.top-right
 					w(149px)
 					transform rotate(180deg)
@@ -676,6 +739,65 @@ body
 					right calc(50% - 610px)
 					bottom -420px
 					transform rotate(185deg) rotateY(180deg) scale(.8)
+	&-menu
+		+desktop()
+			.ondesk-img
+				&.top
+					&-left
+						top 90px
+						left calc(50% - 770px)
+						transform rotateY(180deg) scale(1.5)
+					&-right
+						top 330px
+						right calc(50% - 730px)
+				&.bottom
+					&-left
+						bottom -10px
+						left calc(50% - 640px)
+						transform rotate(180deg) scale(0.8)
+					&-right
+						bottom -220px
+						right calc(50% - 600px)
+						transform rotate(180deg) rotateY(180deg) scale(0.8)
+	&-product
+		.ondesk-img
+			+desktop()
+				&.top
+					&-left
+						top 170px
+						left calc(50% - 750px)
+					&-right
+						top 630px
+						right calc(50% - 725px)
+				&.bottom
+					&-left
+						bottom -210px
+						left calc(50% - 690px)
+	&-order
+		.ondesk-img
+			+desktop()
+				&.top
+					&-left
+						top 130px
+						left calc(50% - 760px)
+					&-right
+						top 480px
+						right calc(50% - 660px)
+						transform rotateY(180deg) scale(1.2)
+		&-history
+			.ondesk-img
+				+desktop()
+					&.top
+						&-left
+							top 110px
+							left calc(50% - 740px)
+						&-right
+							top 570px
+							right calc(50% - 740px)
+					&.bottom
+						&-left
+							bottom -130px
+							left calc(50% - 700px)
 	&-map
 		wh(100%,55vw)
 		min-height 350px
@@ -1002,6 +1124,42 @@ body
 	padding-top 20px
 	+desktop()
 		padding-top 30px
+		position relative
+	.ondesk-img
+		+desktop()
+			&.top
+				&-top
+					&-right
+						right calc(50% - 650px)
+						top 0
+						transform rotateY(180deg) scale(1.3)
+					&-left
+						top 665px
+						right calc(50% - 660px)
+						transform rotate(70deg)
+				&-left
+					top 750px
+					left calc(50% - 755px)
+					transform rotateY(180deg)
+				&-right
+					top 1010px
+					right calc(50% - 710px)
+			&.bottom
+				&-left
+					top 1356px
+					left calc(50% - 730px)
+				&-right
+					bottom 870px
+					right calc(50% - 760px)
+					transform scale(1.2)
+				&-bot
+					&-left
+						bottom 720px
+						left calc(50% - 750px)
+						transform scale(1.4) rotate(45deg)
+					&-right
+						bottom 200px
+						right calc(50% - 700px)
 	&-nav
 		padding-bottom 6px
 		margin-bottom 20px
@@ -1053,6 +1211,20 @@ body
 		text-decoration line-through
 		color RGB($red)
 .product
+	.ondesk-img
+		+desktop()
+			&.top
+				&-left
+					top -60px
+					left calc(50% - 700px)
+					transform rotate(180deg) scale(0.8)
+				&-right
+					top 30px
+					right calc(50% - 730px)
+			&.bottom
+				&-left
+					bottom -30px
+					left calc(50% - 750px)
 	&-back
 		position absolute
 		top 10px
@@ -1063,6 +1235,9 @@ body
 			display flex
 			align-items stretch
 			column-gap 18px
+		+desktop()
+			position relative
+			z-index 1
 		&-img
 			wh(100%,200px)
 			box-shadow 0 4px 4px 0 rgba(0,0,0,.25)
@@ -1096,6 +1271,31 @@ body
 			+tablet-large()
 				margin-top auto
 .order
+	.ondesk-img
+		+desktop()
+			&.top
+				&-right
+					top 10px
+					right calc(50% - 710px)
+				&-left
+					top 450px
+					left calc(50% - 720px)
+	&-history
+		.ondesk-img
+			+desktop()
+				&.top
+					&-left
+						top -135px
+						left calc(50% - 710px)
+						transform rotate(180deg) scale(0.8)
+					&-right
+						top -50px
+						right calc(50% - 720px)
+						transform scale(1.2)
+				&.bottom
+					&-left
+						top 220px
+						left calc(50% - 750px)
 	&-row
 		df({
 			df: '.order-row'
@@ -1195,6 +1395,10 @@ body
 						border-color RGB($black)
 						use
 							stroke RGB($orange)
+	&-list,&-card
+		+desktop()
+			position relative
+			z-index 1
 .count
 	p(3px 5px)
 	df({

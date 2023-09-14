@@ -9,8 +9,6 @@ block content
 		.ondesk-img.top-right
 			+img('garlic.png')
 		.ondesk-img.bottom-left
-			+img('tree-leaf.png')
-		.ondesk-img.bottom-left
 			+img('lemon.png')
 		.section
 			.calendar.product-back
@@ -24,7 +22,7 @@ block content
 						use(xlink:href='/img/sprite.svg#calendar-arrow')
 			h1.history-title.title Order History
 			ul.order-list
-				-for (let i = 0; i < 7; i++)
+				-for (let i = 0; i < 4; i++)
 					li.order-item.history-item
 						.order-item-img
 							+img('menu-img.jpg')
@@ -68,7 +66,7 @@ block content
 							span.block-buttons-right $25.00
 	section.block.contacts.contacts-order-history
 		.ondesk-img.top-left
-			+img('tomato.png')
+			+img('tomato-slice.png')
 		.ondesk-img.top-right
 			+img('lemon.png')
 		.ondesk-img.bottom-left
