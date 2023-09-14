@@ -59,15 +59,15 @@
 		<path d="M18.375 6.125V4.375C18.375 3.91087 18.1906 3.46575 17.8624 3.13756C17.5342 2.80937 17.0891 2.625 16.625 2.625H11.375C10.9109 2.625 10.4658 2.80937 10.1376 3.13756C9.80937 3.46575 9.625 3.91087 9.625 4.375V6.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 	</symbol>
 	<symbol viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" id="calendar">
-		<path d="M22.75 4.375H5.25C4.76675 4.375 4.375 4.76675 4.375 5.25V22.75C4.375 23.2332 4.76675 23.625 5.25 23.625H22.75C23.2332 23.625 23.625 23.2332 23.625 22.75V5.25C23.625 4.76675 23.2332 4.375 22.75 4.375Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		<path d="M19.25 2.625V6.125" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		<path d="M8.75 2.625V6.125" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		<path d="M4.375 9.625H23.625" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		<path d="M16.625 14L11.375 19.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-		<path d="M16.625 19.25L11.375 14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M22.75 4.375H5.25C4.76675 4.375 4.375 4.76675 4.375 5.25V22.75C4.375 23.2332 4.76675 23.625 5.25 23.625H22.75C23.2332 23.625 23.625 23.2332 23.625 22.75V5.25C23.625 4.76675 23.2332 4.375 22.75 4.375Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M19.25 2.625V6.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M8.75 2.625V6.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M4.375 9.625H23.625" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M16.625 14L11.375 19.25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		<path d="M16.625 19.25L11.375 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 	</symbol>
-	<symbol viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg" id="calendar-arrow">
-		<path d="M10 0L5 5L0 0H10Z" fill="#232323"/>
+	<symbol viewBox="0 0 10 5" xmlns="http://www.w3.org/2000/svg" id="calendar-arrow">
+		<path d="M10 0L5 5L0 0H10Z"/>
 	</symbol>
 	<symbol viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" id="cart">
 		<path d="M23.625 7.875H4.375C3.89175 7.875 3.5 8.26675 3.5 8.75V22.75C3.5 23.2332 3.89175 23.625 4.375 23.625H23.625C24.1082 23.625 24.5 23.2332 24.5 22.75V8.75C24.5 8.26675 24.1082 7.875 23.625 7.875Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

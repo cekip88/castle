@@ -5,14 +5,16 @@ class Front extends G_G{
     super();
     const _ = this;
     G_Bus
-	    .on(_,'burgerClick',_.burgerClick.bind(_))
-	    .on(_,'galleryPrev',_.galleryPrev.bind(_))
-	    .on(_,'galleryNext',_.galleryNext.bind(_))
-	    .on(_,'soloSlideChange',_.soloSlideChange.bind(_))
-	    .on(_,'showModal',_.showModal.bind(_))
-	    .on(_,'closeModal',_.closeModal.bind(_))
-	    .on(_,'closeModalByBgc',_.closeModalByBgc.bind(_))
-	    .on(_,'changeLoginForm',_.changeLoginForm.bind(_))
+	    .on(_,[
+	    	'burgerClick',
+	    	'galleryPrev',
+	    	'galleryNext',
+	    	'soloSlideChange',
+	    	'showModal',
+	    	'closeModal',
+	    	'closeModalByBgc',
+	    	'changeLoginForm',
+	    ])
   }
   define(){
     const _ = this;

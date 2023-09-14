@@ -12,12 +12,14 @@ block content
 			+img('lemon.png')
 		.section
 			.calendar.product-back
-				button.btn-white.calendar-head
+				input(type='hidden' name='history_from')
+				input(type='hidden' name='history_to')
+				button.btn-white.calendar-head(data-click="calendar:calendarShow" name='history')
 					svg
 						use(xlink:href='/img/sprite.svg#calendar')
-					span.calendar-head-start MRCH 10,2023
+					span.calendar-head-start
 					span -
-					span.calendar-head-end MRCH 13, 2023
+					span.calendar-head-end
 					svg.calendar-head-arrow
 						use(xlink:href='/img/sprite.svg#calendar-arrow')
 			h1.history-title.title Order History
@@ -104,3 +106,5 @@ block content
 					.contacts-item-right
 						h6.contacts-item-title ADDRESS
 						a(href="https://www.google.com/maps/place/Castle,+Ha-Atsma'ut+St+85,+Ashdod,+7745273,+Израиль/@31.7879589,34.6442903,19z/data=!4m14!1m7!3m6!1s0x1502a2f920e8e5e3:0xa0a1f02bdd2358c2!2zSGFBdHNtYXV0IDg1LCBBc2hkb2QsINCY0LfRgNCw0LjQu9GM!8m2!3d31.7879589!4d34.6442903!16s%2Fg%2F11rgfjfbql!3m5!1s0x1502a2f8d7cd6a79:0xa2aa051b7a32d1ae!8m2!3d31.7879589!4d34.6442903!16s%2Fg%2F11bx2k9x74" target="_blank").contacts-item-text Ha-Atsma'ut St 85, Ashdod
+	section
+		+inc('js','calendar.js',false)(type="module")

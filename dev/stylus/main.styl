@@ -231,16 +231,24 @@ body
 		text-transform uppercase
 		font-size 14px
 		color RGB($black)
-		use
-			stroke RGB($black)
+		svg:not(.calendar-head-arrow)
+			use
+				stroke RGB($black)
+		.calendar-head-arrow
+			use
+				fill RGB($black)
 		+desktop()
 			&,use
 				tr()
 			&:hover
 				bgc(RGB($orange))
 				color RGB($white)
-				use
-					stroke RGB($white)
+				svg:not(.calendar-head-arrow)
+					use
+						stroke RGB($white)
+				.calendar-head-arrow
+					use
+						fill RGB($white)
 .hover
 	+desktop()
 		position relative
@@ -1441,8 +1449,81 @@ body
 			w(initial)
 .calendar
 	&-head
-		svg
-			&:last-child
-				wh(10px,5px)
+		.calendar-head-arrow
+			wh(10px,5px)
+			tr()
 		&-arrow
 			margin-left 13px
+		&.active
+			.calendar-head-arrow
+				transform rotate(180deg)
+
+.cal
+	&-body
+		min-width 300px
+		w(100%)
+		p(10px)
+		df({
+			df: '.cal-body'
+		})
+		flex-direction column
+		align-items stretch
+		bgc(RGB($white))
+		border-radius 17px
+		border 1px solid #E5E5E5
+		box-shadow 0 1px 6px 0 rgba(0,0,0,.08)
+		position absolute
+		top calc(100% + 10px)
+		left 0
+		z-index 10000
+		&,button,a
+			color RGB($black)
+		svg
+			wh(8px,16px)
+		path
+			fill RGB($black)
+		&-header
+			margin-bottom 14px
+			df({
+				df: '.cal-body-header'
+				ali: center
+				jus: space-between
+			})
+			font-size 16px
+			&-month
+				w(100px)
+			&-year
+				position absolute
+				left 50%
+				transform translateX(-50%)
+			&-btn
+				p(5px 10px)
+		&-titles
+			df({
+				df: '.cal-body-titles'
+			})
+			span
+				wh(calc(100% / 7),40px)
+				df({
+					df: '.cal-body-titles span'
+					ali: center
+					jus: center
+				})
+		&-days
+			df({
+				df: '.cal-body-days'
+			})
+			flex-wrap wrap
+			.day
+				wh(calc(100% / 7),40px)
+				df({
+					df: '.cal-body-days .day'
+					ali: center
+					jus: center
+				})
+				&.active
+					bgc(rgba(46,129,253,1))
+					color RGB($white)
+				&.middle
+					bgc(rgba(46,129,253,.4))
+					color RGB($white)
