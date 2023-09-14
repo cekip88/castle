@@ -88,7 +88,7 @@ class Front extends G_G{
 	isBetween(date){
 		const _ = this;
 		let dates = _.dates[_.name];
-		if (!dates['start'] && !dates['end']) return false;
+		if (!dates['start'] || !dates['end']) return false;
 
 		let startTime = new Date(`${dates['start'].getFullYear()}-${dates['start'].getMonth() + 1}`).getTime();
 		let
