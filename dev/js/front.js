@@ -15,6 +15,7 @@ class Front extends G_G{
 	    	'closeModalByBgc',
 	    	'changeLoginForm',
 	    ])
+	  G_Bus.on('calendar','changeDates',_.changeDates.bind(_))
   }
   define(){
     const _ = this;
@@ -24,6 +25,9 @@ class Front extends G_G{
     _.resolution = _.getResolution();
     _.init();
   }
+	changeDates(data) {
+		console.log(data)
+	}
 
 	showModal({item}){
   	const _ = this;

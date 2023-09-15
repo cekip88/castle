@@ -125,6 +125,8 @@ class Front extends G_G{
 		_.head.classList.remove('active');
 		_.body.remove();
 		_.body = null;
+
+		if (!_.firstClick) G_Bus.trigger(_.componentName,'changeDates',_.dates[_.name])
 	};
 	calendarNext(){
 		const _ = this;
